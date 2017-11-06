@@ -1,0 +1,40 @@
+body {
+  padding-top: 100px;
+  background: #eee;
+  background: #727f9a; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #727f9a 0%, #929fb2 35%, #8795ab 65%, #bdc5d1 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #727f9a 0%,#929fb2 35%,#8795ab 65%,#bdc5d1 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #727f9a 0%,#929fb2 35%,#8795ab 65%,#bdc5d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#727f9a', endColorstr='#bdc5d1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.form-signin {
+  max-width: 250px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+.form-signin {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  height: 30px;
+}
+
+#inputBdate{
+  height: 45px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}

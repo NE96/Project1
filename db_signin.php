@@ -1,31 +1,33 @@
 <?php 
-require 'user.php';
+//require 'pdo.php';
+
+$link = mysql_connect('sql2.njit.edu', 'ne58', '7ir1qWL9P');
+if (!$link) {
+    die('Could not connect: ' . mysql_error());
+}
+echo 'Connected successfully'."<br>";
 
 $u_email = $_POST["reg_email"];
 
 $pass = $_POST["reg_pass"];
 
-$user = new User;
+$result = mysql_query("SELECT fname, lname FROM accounts WHERE email = '$u_email' AND password = '$pass'");
 
-$result = $user->checkUserEmail($u_email);
-
-$result2 = $user->checkUserPassword($pass, $u_email);
-
-if (count($result) > 0) {
-	echo "No such account exists";
-
-} 
-/*elseif (count($row2) == 0) {
-	echo "Wrong Password";
-}
-else {
-	echo "Welcome 'lname' 'fname'";
+/*while($row = mysql_fetch_array($result, MYSQL_ASSOC)){
+	printf("Welcome %s %s", $row['fname'], $row['lname']);
 }*/
+
+while ($row = mysql_fetch_assoc($result)) {
+    echo $row['fname'];
+    echo $row['lname'];
+}
+
+mysql_close($link);
 
 ?>
 
 <div>
-    <h2 align="middle">Return to <a href="signin.php">Sign In page</a></h2>
+    <h2 align="middle"><a href="signin.php">Log Out</a></h2>
 </div>
 
 <?php ?>

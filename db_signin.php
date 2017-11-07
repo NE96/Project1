@@ -1,5 +1,4 @@
 <?php 
-//require 'pdo.php';
 
 $link = mysql_connect('sql2.njit.edu', 'ne58', '7ir1qWL9P');
 if (!$link) {

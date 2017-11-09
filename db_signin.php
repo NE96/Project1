@@ -1,27 +1,41 @@
 <?php 
 
-$link = mysql_connect('sql2.njit.edu', 'ne58', '7ir1qWL9P');
-if (!$link) {
-    die('Could not connect: ' . mysql_error());
-}
-echo 'Connected successfully'."<br>";
-
 $u_email = $_POST["reg_email"];
 
 $pass = $_POST["reg_pass"];
 
-$result = mysql_query("SELECT fname, lname FROM accounts WHERE email = '$u_email' AND password = '$pass'");
+class User
+{
+	function __construct()
+	{
+		$hostname = "sql2.njit.edu";
+		$username = "ne58";
+		$password = "7ir1qWL9P";
+		$conn = new PDO("mysql:host=$hostname;dbname=ne58",
+		$username, $password);
+		$this->connection = $conn;
+		echo "Connected Successfully"."<br>"; 
+	}
 
-/*while($row = mysql_fetch_array($result, MYSQL_ASSOC)){
-	printf("Welcome %s %s", $row['fname'], $row['lname']);
-}*/
-
-while ($row = mysql_fetch_assoc($result)) {
-    echo $row['fname'];
-    echo $row['lname'];
+	function signIn($email, $password)
+	{	
+		$this->email = $email;
+		$this->password = $password;
+		$sql = "select * from accounts where email = ".$this->email." and password = ".$this->password;
+		$results = $this->connection->query($sql);
+		if (count($results) == 0){
+			echo "The password is wrong or this account does not exist";
+		}
+		else {
+			$row = mysql_fetch_assoc($results);
+			echo "Welcome ".$row['fname']." ".$row['lname']."!";
+		}
+	}
 }
 
-mysql_close($link);
+$user1 = new User;
+
+$user1->signIn(''.$u_email, ''.$pass);
 
 ?>
 
